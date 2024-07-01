@@ -1,0 +1,226 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: #333;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+body::before {
+  content: "";
+  position:absolute;
+  top: 70px;
+  left: 0;
+  width: 100%;
+  height: 90%;
+  /* background-color: rgb(193, 143, 77); */
+  background: url('../images/Translator_Logo.png') no-repeat center center/cover;
+  opacity: 0.6; /* Adjust opacity as needed */
+  z-index: -1;
+}
+header {
+  background:  #9747ff;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+.site-name {
+  font-size: 1.5rem;
+  font-family: 'Georgia', serif; /* Change to a different font */
+  font-weight: bold; /* Make the text bold */
+  color: #fff; /* Ensure the text color is white */
+  letter-spacing: 1px; /* Add some letter spacing */
+}
+.logo {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+.site-name {
+  font-size: 1.5rem;
+}
+
+.nav-links {
+  display: flex;
+  gap: 15px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
+}
+
+main {
+  flex: 1;
+  padding: 1rem;
+}
+
+.slider {
+  position: relative;
+  width: 80%;
+  margin: auto;
+  overflow: hidden;
+}
+
+.slides {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+  min-width: 100%;
+  box-sizing: border-box;
+  padding: 20px;
+}
+
+.slider-dots {
+  text-align: center;
+  padding: 20px;
+}
+
+.slider-dots button {
+  border: none;
+  background: #ddd;
+  padding: 5px;
+  margin: 5px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.slider-dots button.active {
+  background: #333;
+}
+
+.translator__button {
+  background-color: #9747ff;
+  color: white;
+  padding: 15px 30px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.translator__button:hover {
+  background-color: #45a049;
+  transform: scale(1.1);
+}
+
+footer {
+  background: #333;
+  color: white;
+  text-align: center;
+  padding: 1rem 0;
+  margin-top: auto;
+}
+
+.about-us {
+  background: rgba(249, 242, 242, 0.805); /* semi-transparent white */
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  max-width: 600px;
+  margin: 2rem auto;
+  text-align: center;
+  backdrop-filter: blur(10px); /* creates the glass effect */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: opacity 1s ease-in-out;
+}
+
+
+.about-us h2 {
+  color:  #9747ff;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.about-us p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+/* Popup CSS */
+.popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.popup-content h2 {
+  color: #9747ff;
+}
+
+.popup-content select {
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+.popup-content button {
+  background-color: #9358df;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.popup-content button:hover {
+  background-color: #7b33d8;
+}
+
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .nav-links a {
+    font-size: 1.2rem;
+  }
+}
