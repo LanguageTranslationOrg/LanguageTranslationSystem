@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Language Translator</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/translator.css') }}">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap">
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js" ></script>
+  <script src="{{ url_for('static', filename='javascript/translator.js') }}"></script>
+  <script src="{{ url_for('static', filename='javascript/Translator_languages_script.js') }}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" ></script>
+</head>
+<body>
+  <header>
+    <h1>Language Translator</h1>
+  </header>
+  <main>
+    <section class="translator">
+      <div class="translator__languages">
+        <div class="translator__section">
+          <label for="source-language" class="translator__label">Source Language</label>
+          <select id="source-language" class="translator__select">
+            <option value="en">English</option>
+            <option value="te">తెలుగు</option>
+            <option value="hi">हिन्दी</option>
+            <option value="mr">मराठी</option>
+            <option value="or">Oriya</option>
+            <option value="bn">বাংলা</option>
+            <option value="ur">اردو</option>
+            <option value="ml">മലയാളം</option>
+            <option value="ta">தமிழ்</option>
+            <option value="pa">ਪੰਜਾਬੀ</option>
+            <option value="kn">ಕನ್ನಡ</option>
+          </select>
+        </div>
+        <div class="translator__section">
+          <label for="target-language" class="translator__label">Target Language</label>
+          <select id="target-language" class="translator__select">
+            <option value="en">English</option>
+            <option value="te">తెలుగు</option>
+            <option value="hi">हिन्दी</option>
+            <option value="mr">मराठी</option>
+            <option value="or">Oriya</option>
+            <option value="bn">বাংলা</option>
+            <option value="ur">اردو</option>
+            <option value="ml">മലയാളം</option>
+            <option value="ta">தமிழ்</option>
+            <option value="pa">ਪੰਜਾਬੀ</option>
+            <option value="kn">ಕನ್ನಡ</option>
+          </select>
+        </div>
+      </div>
+      <div class="translator__section">
+        <label for="source-text" class="translator__label">Enter Text</label>
+        <textarea id="source-text" class="translator__textarea" placeholder="Enter text here..." maxlength="1000" oninput="updateCount()"></textarea>
+        <div class="char-count" id="charCount">1000 characters remaining</div>
+      </div>
+      <div class="translator__section">
+        <label for="target-text" class="translator__label">Translated Text</label>
+        <textarea id="target-text" class="translator__textarea" readonly></textarea>
+      </div>
+      <div class="translator__buttons">
+      <button class="translator__button" onclick="translateText()">Translate</button>
+      <button class="translator__button1" onclick="resetFields()">Reset</button>
+      </div>
+      <div class="translator__actions" id="translatorActions">
+        <button class="translator__button--action" onclick="copyText()">Copy</button>
+        <button class="translator__button--action" onclick="shareText()">Share</button>
+      </div>
+      <div class="spinner-overlay" id="spinner-overlay" style="display:none;">
+        <div class="spinner"></div>
+        <img src="../static/images/Translator_Logo.png" alt="Logo" class="spinner-logo">
+        <h3>Translating....</h3>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2024 Language Translator. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
