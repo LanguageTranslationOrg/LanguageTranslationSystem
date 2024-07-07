@@ -1,4 +1,4 @@
-Steps to setup bashabridge Language Translator.
+Steps to setup Bhasha Bridge Language Translator.
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 1.Clone the Repository:
