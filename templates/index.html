@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to Language Translator App</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="{{ url_for('static', filename='javascript/Home_languages_script.js') }}"></script>
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <div class="logo-container">
+        <img src="{{ url_for('static', filename='images/Translator_Logo.png') }}" alt="Logo" class="logo">
+        <h1 class="site-name">Bhasa Bridge</h1>
+      </div>
+      <div class="language-container">
+        <div class="language-select-container">
+          <img src="/static/images/language_symbol.jpeg" class="language-symbol">
+          <select name="language" id="language" class="language-select" required>
+            <option value="en">English</option>
+            <option value="te">తెలుగు</option> <!-- Telugu -->
+            <option value="hi">हिन्दी</option> <!-- Hindi -->
+            <option value="mr">मराठी</option> <!-- Marathi -->
+            <option value="ur">اردو</option> <!-- Urdu -->
+            <option value="bn">বাংলা</option> <!-- Bengali -->
+            <option value="kn">ಕನ್ನಡ</option> <!-- Kannada -->
+            <option value="ml">മലയാളം</option> <!-- Malayalam -->
+            <option value="ta">தமிழ்</option> <!-- Tamil -->
+            <option value="pa">ਪੰਜਾਬੀ</option> <!-- Punjabi -->
+            <option value="or">ଓଡ଼ିଆ</option> <!-- Oriya -->
+            <option value="gu">ગુજરાતી</option> <!-- Gujarati -->
+          </select>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <a href="#about-us" class="nav-about-us">About Us</a>
+        <a href="#contact-us" class="nav-contact-us">Contact Us</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="about-us">
+      <div class="welcome">
+        <h2>Welcome to Bhasha Bridge</h2>
+        <p>In today's interconnected world, effective communication across languages is more important than ever. Our language translation application empowers you to transcend linguistic boundaries effortlessly. Delivering accurate and instant translations, our app is designed with a user-friendly interface and powered by advanced AI technology. We ensure high-quality translations while prioritizing your privacy and data security. Join thousands of satisfied users and experience seamless communication—try our translation app today!</p>
+        <a href="{{ url_for('translator') }}" class="translator__button">Get Started</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Language Translator. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

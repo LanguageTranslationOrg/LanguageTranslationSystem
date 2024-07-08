@@ -1,0 +1,232 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: #333;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  position: relative; /* Ensure body-relative positioning */
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  top: 70px;
+  left: 0;
+  width: 100%;
+  height: 90%;
+  background: url('../images/Translator_Logo.png') no-repeat center center/cover;
+  opacity: 0.6;
+  z-index: -1;
+}
+
+header {
+  background: #9747ff;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.site-name {
+  font-size: 1.5rem;
+  font-family: 'Georgia', serif;
+  font-weight: bold;
+  color: #fff;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+.language-container {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  padding: 4px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  position: relative; /* Ensure proper layering */
+  z-index: 10; /* Bring it in front of other content */
+}
+
+.language-symbol {
+  width: 40px; /* Adjust size as needed */
+  height: auto;
+  margin-right: 10px;
+  transition: transform 0.3s;
+  border-radius: 35%; /* Make the image round */
+}
+
+.language-symbol:hover {
+  transform: scale(1.2); /* Scale up on hover */
+}
+
+
+.language-select {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  color: #333;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.language-select:hover {
+  background-color: #f0f0f0; /* Lighter background on hover */
+}
+
+.nav-links {
+  display: flex;
+  gap: 15px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
+}
+
+main {
+  flex: 1;
+  padding: 1rem;
+}
+
+.slider {
+  position: relative;
+  width: 80%;
+  margin: auto;
+  overflow: hidden;
+}
+
+.slides {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+  min-width: 100%;
+  box-sizing: border-box;
+  padding: 20px;
+}
+
+.slider-dots {
+  text-align: center;
+  padding: 20px;
+}
+
+.slider-dots button {
+  border: none;
+  background: #ddd;
+  padding: 5px;
+  margin: 5px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.slider-dots button.active {
+  background: #333;
+}
+
+.translator__button {
+  background-color: #9747ff;
+  color: white;
+  padding: 15px 30px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.translator__button:hover {
+  background-color: #45a049;
+  transform: scale(1.1);
+}
+
+footer {
+  background: #333;
+  color: white;
+  text-align: center;
+  padding: 1rem 0;
+  margin-top: auto;
+}
+
+.about-us {
+  background: rgba(249, 242, 242, 0.805);
+  border-radius: 8px;
+  box-shadow: 0px 0px 20px 20px rgba(0, 0, 0, 0.1);
+  padding: 3rem;
+  max-width: 600px;
+  margin: 3rem auto;
+  text-align: center;
+  backdrop-filter: blur(50px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: opacity 1s ease-in-out;
+  opacity:85%;
+}
+
+.about-us h2 {
+  color: #9747ff;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.about-us p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .language-container {
+    margin-bottom: 10px; /* Adjust spacing */
+  }
+
+  .language-symbol {
+    margin-right: 0;
+    margin-bottom: 0; /* Remove margin bottom */
+  }
+
+  .language-select {
+    padding: 8px; /* Adjust padding */
+  }
+}
