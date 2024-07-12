@@ -8,10 +8,6 @@ def map_lng_keywords(src_lng,tgt_lng):
     src_lng,tgt_lng=lng_keywords_dict[src_lng],lng_keywords_dict[tgt_lng]
     return (src_lng,tgt_lng)
 
-# Dummy translation function
-# def translate(source_text, source_lang, target_lang):
-#     return f"Translated from {source_lang} to {target_lang}: {source_text}"
-
 @app.route('/')
 def index():
     return render_template('index.html')

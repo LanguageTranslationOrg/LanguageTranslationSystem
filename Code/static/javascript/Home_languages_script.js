@@ -1,7 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Show the popup when the page loads
-    document.getElementById('popup').style.display = 'flex';
-
     // Function to fetch JSON data
     function fetchData(url) {
         return fetch(url)
@@ -19,20 +16,18 @@ document.addEventListener('DOMContentLoaded', function() {
             // Update website elements with the translated text
             document.querySelector('.site-name').textContent = languageData.siteName;
             document.querySelector('.nav-home').textContent = languageData.navHome;
-            document.querySelector('.nav-about-us').textContent = languageData.navAboutUs;
-            document.querySelector('.nav-contact-us').textContent = languageData.navContactUs;
             document.querySelector('.welcome h2').textContent = languageData.welcomeTitle;
             document.querySelector('.welcome p').textContent = languageData.welcomeMessage;
             document.querySelector('.translator__button').textContent = languageData.getStartedButton;
+            document.querySelector('label[for="language"]').textContent = languageData.languageLabel;
+            document.querySelector('footer p').innerHTML = languageData.footerText;
         } else {
             console.error('Selected language not found in the data');
         }
     }
 
-    
-
-    document.getElementById('enter-main-page').onclick = async function() {
-        var selectedLanguage = document.getElementById('language').value||'en';
+    document.getElementById('language').addEventListener('change', async function() {
+        var selectedLanguage = this.value || 'en';
         localStorage.setItem('selectedLanguage', selectedLanguage);
         // Fetch JSON data
         var data = await fetchData('/static/data/Home_languages.json');
@@ -42,9 +37,16 @@ document.addEventListener('DOMContentLoaded', function() {
         if (data) {
             updateLanguage(selectedLanguage, data);
         }
+    });
 
-        // Show the main content and hide the popup
-        document.getElementById('popup').style.display = 'none';
-        document.getElementById('main-content').style.display = 'block';
-    }
+    // Fetch the initial language selection from localStorage
+    var initialLanguage = localStorage.getItem('selectedLanguage') || 'en';
+    document.getElementById('language').value = initialLanguage;
+
+    // Fetch JSON data and update the page language on initial load
+    fetchData('/static/data/Home_languages.json').then(data => {
+        if (data) {
+            updateLanguage(initialLanguage, data);
+        }
+    });
 });

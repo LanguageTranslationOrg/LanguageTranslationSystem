@@ -1,5 +1,5 @@
 from transformers import AutoModelForSeq2SeqLM
-from IndicTransTokenizer.IndicTransTokenizer.IndicTransTokenizer import processor,tokenizer
+from IndicTransTokenizer.IndicTransTokenizer import processor,tokenizer
 import torch
 
 __model1=None
@@ -16,13 +16,13 @@ def load_models():
     global __model3,__tokenizer3
     global __ip
     try:
-        __model1=AutoModelForSeq2SeqLM.from_pretrained(r'indictrans2-indic-indic-dist-320M',trust_remote_code=True)
+        __model1=AutoModelForSeq2SeqLM.from_pretrained(r'Code/indictrans2-indic-indic-dist-320M',trust_remote_code=True)
         __tokenizer1=tokenizer.IndicTransTokenizer(direction='indic-indic')
 
-        __model2=AutoModelForSeq2SeqLM.from_pretrained(r'indictrans2-indic-en-dist-200M',trust_remote_code=True)
+        __model2=AutoModelForSeq2SeqLM.from_pretrained(r'Code/indictrans2-indic-en-dist-200M',trust_remote_code=True)
         __tokenizer2=tokenizer.IndicTransTokenizer(direction='indic-en')
 
-        __model3=AutoModelForSeq2SeqLM.from_pretrained(r'indictrans2-en-indic-dist-200M',trust_remote_code=True)
+        __model3=AutoModelForSeq2SeqLM.from_pretrained(r'Code/indictrans2-en-indic-dist-200M',trust_remote_code=True)
         __tokenizer3=tokenizer.IndicTransTokenizer(direction='en-indic')
 
         __ip=processor.IndicProcessor(inference=True)
