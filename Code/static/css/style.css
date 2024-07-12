@@ -12,20 +12,21 @@ body {
   flex-direction: column;
   min-height: 100vh;
 }
+
 body::before {
   content: "";
-  position:absolute;
+  position: absolute;
   top: 70px;
   left: 0;
   width: 100%;
   height: 90%;
-  /* background-color: rgb(193, 143, 77); */
   background: url('../images/Translator_Logo.png') no-repeat center center/cover;
   opacity: 0.6; /* Adjust opacity as needed */
   z-index: -1;
 }
+
 header {
-  background:  #9747ff;
+  background: #9747ff;
   padding: 1rem;
   display: flex;
   justify-content: space-between;
@@ -43,26 +44,25 @@ header {
   display: flex;
   align-items: center;
 }
+
 .site-name {
   font-size: 1.5rem;
-  font-family: 'Georgia', serif; /* Change to a different font */
-  font-weight: bold; /* Make the text bold */
-  color: #fff; /* Ensure the text color is white */
-  letter-spacing: 1px; /* Add some letter spacing */
+  font-family: 'Georgia', serif;
+  font-weight: bold;
+  color: #fff;
+  letter-spacing: 1px;
 }
+
 .logo {
   width: 50px;
   height: 50px;
   margin-right: 10px;
 }
 
-.site-name {
-  font-size: 1.5rem;
-}
-
 .nav-links {
   display: flex;
   gap: 15px;
+  align-items: center; /* Align items vertically */
 }
 
 .nav-links a {
@@ -73,6 +73,20 @@ header {
 
 .nav-links a:hover {
   text-decoration: underline;
+}
+
+.language-selector label,
+.language-selector select {
+  color: white; /* Ensure the text color is white */
+  font-size: 1rem;
+}
+
+.language-selector select {
+  background: #9747ff; /* Match the background color */
+  border: 1px solid white;
+  border-radius: 4px;
+  padding: 0.5rem;
+  font-size: 1rem;
 }
 
 main {
@@ -152,9 +166,8 @@ footer {
   transition: opacity 1s ease-in-out;
 }
 
-
 .about-us h2 {
-  color:  #9747ff;
+  color: #9747ff;
   font-size: 1.5rem;
   margin-bottom: 1rem;
 }

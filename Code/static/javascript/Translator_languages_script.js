@@ -30,34 +30,30 @@ document.addEventListener('DOMContentLoaded', function() {
             document.querySelector('.translator__button1').textContent = languageData.reset;
             document.querySelector('.translator__button--action[onclick="copyText()"]').textContent = languageData.copyButton;
             document.querySelector('.translator__button--action[onclick="shareText()"]').textContent = languageData.shareButton;
+            document.querySelector('.translator__button--action[onclick="shareOnWhatsApp()"]').textContent = languageData.shareOnWhatsApp;
+            document.querySelector('.translator__button--action[onclick="shareViaEmail()"]').textContent = languageData.shareViaEmail;
             document.querySelector('.char-count').textContent = languageData.charCount;
-            document.querySelector('.translator__textarea').placeholder =languageData.placeholder;
+            document.querySelector('#source-text').placeholder = languageData.placeholder;
 
+            // Update footer text
+            document.querySelector('footer p').innerHTML = languageData.footerText;
         } else {
             console.error('Selected language not found in the data');
         }
     }
 
-    // Get selected language from localStorage
-    const selectedLanguage = localStorage.getItem('selectedLanguage');
-    const selectElement = document.getElementById("source-language");
-
-
-    // Loop through the options and find the one that matches the stored language code
-    for (let i = 0; i < selectElement.options.length; i++) {
-      const option = selectElement.options[i];
-      if (option.getAttribute("value") === selectedLanguage) {
-        option.selected = true;
-        break;
-      }
-    }
+    // Load the selected language from localStorage
+    const selectedLanguage = localStorage.getItem('selectedLanguage') || 'en';
     console.log('Selected Language from localStorage:', selectedLanguage);
-    
-    // Fetch JSON data and update translator page
+
+    // Fetch JSON data and update the translator page
     fetchData('/static/data/Translator_languages.json')
         .then(data => {
             if (data) {
                 updateTranslatorLanguage(selectedLanguage, data);
+                // Set the select element to the stored language
+                const selectElement = document.getElementById("source-language");
+                selectElement.value = selectedLanguage;
             } else {
                 console.error('Error fetching data or data is null.');
             }
@@ -65,4 +61,16 @@ document.addEventListener('DOMContentLoaded', function() {
         .catch(error => {
             console.error('Error fetching or updating translator language data:', error);
         });
+
+    // Update the translator language when the select element changes
+    document.getElementById('source-language').addEventListener('change', function() {
+        const newSelectedLanguage = this.value;
+        localStorage.setItem('selectedLanguage', newSelectedLanguage);
+        fetchData('/static/data/Translator_languages.json')
+            .then(data => {
+                if (data) {
+                    updateTranslatorLanguage(newSelectedLanguage, data);
+                }
+            });
+    });
 });

@@ -5,47 +5,47 @@ function validateTextWithRegex(sourceText, sourceLang) {
   switch (sourceLang) {
       case 'en':
           console.log("Unsupported language code:", sourceLang);
-          regexPattern =  /^[a-zA-Z0-9\s\.,:;?!@#$%^&*()_+=-{}[\]|\\<>/~`'"]*$/; // English
+          regexPattern =  /^[a-zA-Z0-9\s\.,:;?!@#$%^&*()_+=\-{}[\]|\\<>/~`'!"£$%^&*()_+=<>?:{}|~`,.;]+$/; // English
           errorMessage = "String contains non-English characters";
           break;
       case 'pa':
-          regexPattern = /^[\u0A00-\u0A7F0-9\s.,;?!'"@#%&*()\[\]{}\-]+$/u; // Punjabi
+          regexPattern = /^[\u0A00-\u0A7F0-9\s\.,:;?!@#$%^&*()_+=\-{}[\]|\\<>/~`'!"£$%^&*()_+=<>?:{}|~`,.;]+$/u; // Punjabi
           errorMessage = "String contains non-Punjabi characters";
           break;
       case 'ur':
-          regexPattern = /^[\u0600-\u06FF\u0750-\u077F0-9\s.,;?!'"@#%&*()\[\]{}\-]+$/u; // Urdu
+          regexPattern = /^[\u0600-\u06FF\u0750-\u077F0-9\s\.,:;?!@#$%^&*()_+=\-{}[\]|\\<>/~`'!"£$%^&*()_+=<>?:{}|~`,.;]+$/u; // Urdu
           errorMessage = "String contains non-Urdu characters";
           break;
       case 'hi':
-          regexPattern = /^[\u0900-\u097F0-9\s.,;?!'"@#%&*()\[\]{}\-]+$/u; // Hindi
+          regexPattern = /^[\u0900-\u097F0-9\s\.,:;?!@#$%^&*()_+=\-{}[\]|\\<>/~`'!"£$%^&*()_+=<>?:{}|~`,.;]+$/u; // Hindi
           errorMessage = "String contains non-Hindi characters";
           break;
       case 'bn':
-          regexPattern = /^[\u0980-\u09FF0-9\s.,;?!'"@#%&*()\[\]{}\-]+$/u; // Bengali
+          regexPattern = /^[\u0980-\u09FF0-9\s\.,:;?!@#$%^&*()_+=\-{}[\]|\\<>/~`'!"£$%^&*()_+=<>?:{}|~`,.;]+$/u; // Bengali
           errorMessage = "String contains non-Bengali characters";
           break;
       case 'ta':
-          regexPattern = /^[\u0B80-\u0BFF0-9\s.,;?!'"@#%&*()\[\]{}\-]+$/u; // Tamil
+          regexPattern = /^[\u0B80-\u0BFF0-9\s\.,:;?!@#$%^&*()_+=\-{}[\]|\\<>/~`'!"£$%^&*()_+=<>?:{}|~`,.;]+$/u; // Tamil
           errorMessage = "String contains non-Tamil characters";
           break;
       case 'te':
-          regexPattern = /^[ఁ-౿0-9\u0964-\u0965\u0970\s!,.-:;?(){}[\]]*$/; // Telugu
+          regexPattern = /^[ఁ-౿0-9\u0964-\u0965\u0970\s\.,:;?!@#$%^&*()_+=\-{}[\]|\\<>/~`'!"£$%^&*()_+=<>?:{}|~`,.;]+$/; // Telugu
           errorMessage = "String contains non-Telugu characters";
           break;
       case 'kn':
-          regexPattern = /^[\u0C80-\u0CFF0-9\s.,;?!'"@#%&*()\[\]{}\-]+$/u; // Kannada
+          regexPattern = /^[\u0C80-\u0CFF0-9\s\.,:;?!@#$%^&*()_+=\-{}[\]|\\<>/~`'!"£$%^&*()_+=<>?:{}|~`,.;]+$/u; // Kannada
           errorMessage = "String contains non-Kannada characters";
           break;
       case 'mr':
-          regexPattern = /^[\u0900-\u097F0-9\s.,;?!'"@#%&*()\[\]{}\-]+$/u; // Marathi
+          regexPattern = /^[\u0900-\u097F0-9\s\.,:;?!@#$%^&*()_+=\-{}[\]|\\<>/~`'!"£$%^&*()_+=<>?:{}|~`,.;]+$/u; // Marathi
           errorMessage = "String contains non-Marathi characters";
           break;
       case 'or':
-          regexPattern = /^[\u0B00-\u0B7F0-9\s.,;?!'"@#%&*()\[\]{}\-]+$/u; // Oriya
+          regexPattern = /^[\u0B00-\u0B7F0-9\s\.,:;?!@#$%^&*()_+=\-{}[\]|\\<>/~`'!"£$%^&*()_+=<>?:{}|~`,.;]+$/u; // Oriya
           errorMessage = "String contains non-Oriya characters";
           break;
       case 'ml':
-          regexPattern = /^[\u0D00-\u0D7F0-9\s.,;?!'"@#%&*()\[\]{}\-]+$/u; // Malayalam
+          regexPattern = /^[\u0D00-\u0D7F0-9\s\.,:;?!@#$%^&*()_+=\-{}[\]|\\<>/~`'!"£$%^&*()_+=<>?:{}|~`,.;]+$/u; // Malayalam
           errorMessage = "String contains non-Malayalam characters";
           break;
       default:
@@ -185,25 +185,72 @@ async function updateCount() {
     const pophead=await getValueFromJson("success");
     swal(pophead, popupmsg, "success");
   }
-  
+
   function shareText() {
-    const sourceText = document.getElementById('source-text').value;
-    const targetText = document.getElementById('target-text').value;
-    const shareData = {
-      title: 'Translated Text',
-      text: `Original text:\n${sourceText}\n\nTranslated text through Bhasha Bridge:\n${targetText}\n\nTry our app now: ${window.location.href}`,
-    };
-  
-    if (navigator.share) {
-      navigator.share(shareData).then(() => {
-        console.log('Text shared successfully');
-      }).catch((error) => {
-        console.error('Error sharing text:', error);
-      });
-    } else {
-      alert('Web Share API is not supported in your browser.');
-    }
+  const sourceText = document.getElementById('source-text').value;
+  const targetText = document.getElementById('target-text').value;
+  const sourceLang = document.getElementById('source-language').options[document.getElementById('source-language').selectedIndex].text;
+  const targetLang = document.getElementById('target-language').options[document.getElementById('target-language').selectedIndex].text;
+
+  const shareContent = `Dear User,\n\nBreak language barriers with Bhasha Bridge App - Your personal translator in your pocket!\n\nExperience seamless translations with Bhasha Bridge App!\n\nBhasha Bridge App is dedicated to breaking down language barriers and connecting the world through seamless communication. Our advanced translation app offers precise and fast translations for multiple languages, enabling you to communicate effortlessly for travel, business, or personal connections.\n\nSource Language: ${sourceLang}\n\nOriginal text:\n${sourceText}\n\nTarget Language: ${targetLang}\n\nTranslated text through Bhasha Bridge:\n${targetText}\n\nTry our app now: ${window.location.href}`;
+
+  const shareData = {
+    title: 'Translated Text',
+    text: shareContent,
+  };
+
+  if (navigator.share) {
+    navigator.share(shareData).then(() => {
+      console.log('Text shared successfully');
+    }).catch((error) => {
+      console.error('Error sharing text:', error);
+    });
+  } else {
+    alert('Web Share API is not supported in your browser.');
   }
-   function resetFields() {
-            window.location.reload();
-        }
+}
+
+function shareOnWhatsApp() {
+  const sourceText = document.getElementById('source-text').value;
+  const translatedText = document.getElementById('target-text').value;
+  const sourceLang = document.getElementById('source-language').options[document.getElementById('source-language').selectedIndex].text;
+  const targetLang = document.getElementById('target-language').options[document.getElementById('target-language').selectedIndex].text;
+
+  if (translatedText) {
+    const shareContent = `Dear User,\n\nBreak language barriers with *Bhasha Bridge* - Your personal translator in your pocket!\n\nExperience seamless translations with Bhasha Bridge App!\n\nBhasha Bridge App is dedicated to breaking down language barriers and connecting the world through seamless communication. Our advanced translation app offers precise and fast translations for multiple languages, enabling you to communicate effortlessly for travel, business, or personal connections.\n\n*Source Language:* ${sourceLang}\n\n*Original text:*\n${sourceText}\n\n*Target Language:* ${targetLang}\n\n*Translated text through Bhasha Bridge:*\n${translatedText}\n\nTry our app now: ${window.location.href}`;
+
+    const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(shareContent)}`;
+    window.open(whatsappUrl, '_blank');
+  } else {
+    swal("Error", "No text to share", "error");
+  }
+}
+
+function shareViaEmail() {
+  const sourceText = document.getElementById('source-text').value;
+  const translatedText = document.getElementById('target-text').value;
+  const sourceLang = document.getElementById('source-language').options[document.getElementById('source-language').selectedIndex].text;
+  const targetLang = document.getElementById('target-language').options[document.getElementById('target-language').selectedIndex].text;
+
+  // URL of the image hosted on Google Drive (example)
+  const imageUrl = 'https://drive.google.com/file/d/18NxPTmgfdIB4Hn6xVklm-gEGyRdwXYqL/view?usp=sharing';
+
+  if (translatedText) {
+    const emailSubject = 'Bhasha Bridge';
+    const emailBody = `Dear User,\n\nBreak language barriers with Bhasha Bridge App - Your personal translator in your pocket!\n\nExperience seamless translations with Bhasha Bridge App!\n\nBhasha Bridge App is dedicated to breaking down language barriers and connecting the world through seamless communication. Our advanced translation app offers precise and fast translations for multiple languages, enabling you to communicate effortlessly for travel, business, or personal connections.\n\nSource Language: ${sourceLang}\n\nOriginal text:\n${sourceText}\n\nTarget Language: ${targetLang}\n\nTranslated text through Bhasha Bridge:\n${translatedText}\n\nTry our app now: ${window.location.href}`;
+
+    // Constructing the mailto link with the image as an attachment
+    const mailtoLink = `https://mail.google.com/mail/?view=cm&fs=1&tf=1&su=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}&aip=1&attachment=${encodeURIComponent(imageUrl)}`;
+
+    window.open(mailtoLink, '_blank');
+  } else {
+    swal("Error", "No text to share", "error");
+  }
+}
+
+
+function resetFields() {
+  document.getElementById('source-text').value = '';
+  document.getElementById('target-text').value = '';
+  document.getElementById('source-text').disabled = false; // Enable the source text textarea
+}

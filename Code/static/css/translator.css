@@ -12,14 +12,27 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  position: relative;
 }
+
+body::before {
+  content: "";
+  position: absolute;
+  top: 70px;
+  left: 0;
+  width: 100%;
+  height: 90%;
+  background: url('../images/Translator_Logo.png') no-repeat center center/cover;
+  opacity: 0.6; /* Adjust opacity as needed */
+  z-index: -1;
+}
+
 header {
   background: #9747ff;
   color: white;
   padding: 1rem 0;
   text-align: center;
 }
-
 
 header h1 {
   font-size: 2rem;
@@ -92,6 +105,7 @@ main {
 .translator__button:hover {
   background: #7b33d8;
 }
+
 .translator__button1 {
   display: block;
   width: 100%;
@@ -131,10 +145,12 @@ main {
 .translator__button--action:hover {
   background: #7b33d8;
 }
-.translator__buttons{
+
+.translator__buttons {
   display: flex;
   padding: 0.60rem;
 }
+
 footer {
   background: #333;
   color: white;
@@ -142,6 +158,7 @@ footer {
   padding: 1rem 0;
   margin-top: auto;
 }
+
 .spinner-overlay {
   display: none;
   position: fixed;
@@ -189,7 +206,6 @@ footer {
   100% { transform: rotate(360deg); }
 }
 
-
 @media (max-width: 600px) {
   header h1 {
     font-size: 1.5rem;
@@ -216,4 +232,22 @@ footer {
   font-size: 0.9em;
   color: grey;
   margin-top: 5px;
+}
+
+
+.translator__button--action {
+  background-color: #9747ff;
+  color: white;
+  padding: 10px 20px;
+  margin: 10px 5px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.translator__button--action:hover {
+  background-color: #45a049;
+  transform: scale(1.1);
 }
