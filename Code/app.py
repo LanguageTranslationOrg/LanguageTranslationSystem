@@ -23,10 +23,13 @@ def translate_text():
         source_text = data['source_text']
         source_lang = data['source_lang']
         target_lang = data['target_lang']
-        src_lng,tgt_lng=map_lng_keywords(source_lang,target_lang)
-        source_text=source_text.split('\n')
-        translated_text = util.translate(src_lng, tgt_lng,source_text)
-        translated_text='\n'.join(translated_text)
+        if source_text.isdigit()==True:
+            return jsonify({'translated_text': source_text})
+        else:
+            src_lng,tgt_lng=map_lng_keywords(source_lang,target_lang)
+            source_text=source_text.split('\n')
+            translated_text = util.translate(src_lng, tgt_lng,source_text)
+            translated_text='\n'.join(translated_text)
     except Exception as e:
         return jsonify({'translated_text':f'FLASK SERVER PAGE ERROR'})
     else:
